@@ -1,0 +1,50 @@
+@use "mixins" as m;
+
+.meet {
+  h2 {
+    text-align: center;
+  }
+  .grid-container {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    @include m.mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+  .grid-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      @include m.mobile {
+        height: 200px;
+        width: 200px;
+      }
+      height: 300px;
+      width: 300px;
+      border-radius: 50%;
+      box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.2);
+    }
+
+    h3 {
+      font-size: 12px;
+      font-weight: 400;
+    }
+    .text {
+      margin: 10px;
+      padding: 30px;
+      background-color: rgb(202, 202, 202);
+      font-size: 12px;
+      border-radius: 5px;
+    }
+  }
+}
+.navarrowcontainer {
+  display: flex;
+  margin-bottom: 30px;
+  justify-content: center;
+}

@@ -1,0 +1,117 @@
+@use "mixins" as m;
+
+.background-image {
+  background-image: url(/assets/negative-space-black-forest-dawn.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.trigger {
+  display: none;
+}
+
+@include m.mobile {
+  .hamburger-container {
+    display: flex;
+
+    .trigger:checked ~ & {
+      span:first-child {
+        transform: rotate(45deg);
+        top: 8px;
+      }
+      span:last-child {
+        transform: rotate(-45deg);
+        top: -8px;
+      }
+      span:nth-child(2) {
+        opacity: 0;
+      }
+    }
+  }
+  .hamburger {
+    cursor: pointer;
+
+    margin-left: auto;
+    margin-top: 20px;
+    margin-right: 20px;
+
+    span {
+      height: 3px;
+      width: 30px;
+      background: rgb(255, 255, 255);
+      display: block;
+      margin-bottom: 5px;
+      position: relative;
+      transition: transform 0.4s ease-in-out, top 0.4s ease-in-out;
+    }
+  }
+
+  nav {
+    background-color: rgb(255, 255, 255, 0.1);
+    width: 100vw;
+
+    padding: 30px;
+
+    position: absolute;
+    top: -60px;
+    box-sizing: border-box;
+    transition: top 0.3s ease-in-out;
+
+    .trigger:checked ~ & {
+      top: 0;
+      li {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        transition: opacity 0.3s ease-in-out;
+        opacity: 0;
+        pointer-events: none;
+        margin-bottom: 5px;
+
+        a {
+          text-decoration: none;
+          color: rgb(255, 255, 255);
+        }
+      }
+    }
+  }
+}
+
+@include m.desktop {
+  .navbar {
+    background-color: rgb(255, 255, 255, 0.1);
+    padding: 10px;
+    display: flex;
+    justify-content: end;
+    text-decoration: none;
+    align-items: center;
+
+    ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: end;
+    }
+
+    a {
+      text-decoration: none;
+      margin-right: 35px;
+      color: white;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
